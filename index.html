@@ -15,76 +15,70 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     min-height:100vh;
     overflow-y:auto;
-    background:linear-gradient(135deg,#ffb6d9,#ffd6ec,#fff0f6);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:linear-gradient(135deg,#ff9ecf,#ffd6ec,#fff0f6);
+    font-family:'Poppins',sans-serif;
     position:relative;
-    padding:40px 15px;
 }
 
-/* GLOBOS */
+/* FONDO */
 
-.globos{
+.estrellas{
     position:fixed;
     width:100%;
     height:100%;
     overflow:hidden;
-    z-index:1;
-    top:0;
-    left:0;
-    pointer-events:none;
+    z-index:0;
 }
 
-.globo{
+.estrella{
     position:absolute;
-    bottom:-150px;
-    width:60px;
-    height:80px;
-    border-radius:50%;
-    animation:subir 10s linear infinite;
-    opacity:0.7;
-}
-
-.globo::after{
-    content:'';
-    position:absolute;
-    width:2px;
-    height:70px;
+    width:4px;
+    height:4px;
     background:white;
-    left:50%;
-    top:80px;
+    border-radius:50%;
+    animation:brillo 2s infinite alternate;
 }
 
-@keyframes subir{
-    0%{
-        transform:translateY(0);
+@keyframes brillo{
+    from{
+        opacity:0.3;
+        transform:scale(1);
     }
-    100%{
-        transform:translateY(-120vh);
+    to{
+        opacity:1;
+        transform:scale(1.8);
     }
 }
 
-/* CONTENEDOR */
+/* CONTENIDO */
 
 .container{
-    text-align:center;
+    position:relative;
     z-index:2;
-    width:100%;
-    max-width:700px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px 80px;
 }
 
 /* TITULO */
 
 h1{
-    font-family:'Pacifico', cursive;
+    font-family:'Pacifico',cursive;
     color:white;
-    font-size:2.8rem;
-    text-shadow:0 0 15px rgba(255,255,255,0.8);
-    margin-bottom:20px;
+    font-size:3.2rem;
+    text-shadow:0 0 20px rgba(255,255,255,0.8);
+    margin-bottom:25px;
     animation:flotar 2s ease-in-out infinite;
 }
 
@@ -100,18 +94,16 @@ h1{
 /* BOTON */
 
 button{
-    padding:18px 30px;
+    padding:18px 35px;
     border:none;
-    border-radius:40px;
+    border-radius:50px;
     background:white;
     color:#ff4f9a;
     font-size:1.2rem;
-    font-family:'Poppins', sans-serif;
     font-weight:600;
     cursor:pointer;
+    box-shadow:0 0 25px rgba(255,255,255,0.7);
     transition:0.3s;
-    box-shadow:0 0 20px rgba(255,255,255,0.7);
-    margin-bottom:35px;
 }
 
 button:hover{
@@ -121,63 +113,63 @@ button:hover{
 /* PASTEL */
 
 .pastel{
-    margin:0 auto 30px;
-    width:220px;
-    height:220px;
+    margin-top:50px;
+    width:250px;
+    height:250px;
     position:relative;
     display:none;
     animation:aparecer 1.5s ease;
 }
 
 .base{
-    width:220px;
-    height:90px;
+    width:250px;
+    height:100px;
     background:#ff85b3;
-    border-radius:20px;
+    border-radius:25px;
     position:absolute;
     bottom:0;
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 .capa2{
-    width:180px;
-    height:70px;
+    width:200px;
+    height:75px;
     background:#ff5fa2;
-    border-radius:20px;
+    border-radius:25px;
     position:absolute;
-    bottom:70px;
-    left:20px;
+    bottom:80px;
+    left:25px;
 }
 
 .capa3{
-    width:140px;
-    height:55px;
-    background:#ff3d8d;
-    border-radius:20px;
+    width:150px;
+    height:60px;
+    background:#ff2d88;
+    border-radius:25px;
     position:absolute;
-    bottom:125px;
-    left:40px;
+    bottom:145px;
+    left:50px;
 }
 
 .vela{
-    width:12px;
-    height:45px;
+    width:14px;
+    height:55px;
     background:white;
     position:absolute;
-    top:10px;
-    left:104px;
+    top:5px;
+    left:118px;
     border-radius:10px;
 }
 
 .flama{
-    width:20px;
-    height:20px;
+    width:22px;
+    height:22px;
     background:gold;
-    position:absolute;
-    top:-15px;
-    left:-4px;
     border-radius:50%;
-    box-shadow:0 0 20px gold;
+    position:absolute;
+    top:-18px;
+    left:-4px;
+    box-shadow:0 0 25px gold;
     animation:fuego .6s infinite alternate;
 }
 
@@ -204,16 +196,16 @@ button:hover{
 /* MENSAJE */
 
 .mensaje{
-    font-size:1.4rem;
-    font-family:'Poppins', sans-serif;
+    margin-top:40px;
+    max-width:850px;
     color:white;
-    width:100%;
-    opacity:0;
-    transform:translateY(20px);
-    transition:1s;
+    font-size:1.4rem;
     line-height:2;
-    text-shadow:0 0 10px rgba(0,0,0,0.15);
-    padding-bottom:50px;
+    opacity:0;
+    transform:translateY(30px);
+    transition:1.5s;
+    text-shadow:0 0 12px rgba(0,0,0,0.15);
+    padding-bottom:80px;
     font-weight:600;
 }
 
@@ -222,22 +214,57 @@ button:hover{
     transform:translateY(0);
 }
 
+/* GLOBOS */
+
+.globo{
+    position:absolute;
+    bottom:-150px;
+    width:70px;
+    height:90px;
+    border-radius:50%;
+    opacity:0.7;
+    animation:subir 12s linear infinite;
+}
+
+.globo::after{
+    content:'';
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:white;
+    left:50%;
+    top:90px;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-140vh);
+    }
+}
+
 /* CELULAR */
 
-@media(max-width:600px){
+@media(max-width:700px){
 
     h1{
-        font-size:2.2rem;
+        font-size:2.4rem;
     }
 
     .mensaje{
         font-size:1.2rem;
-        padding:0 10px 50px;
+        line-height:1.8;
     }
 
     button{
         width:90%;
         font-size:1.1rem;
+    }
+
+    .pastel{
+        transform:scale(0.9);
     }
 
 }
@@ -247,75 +274,97 @@ button:hover{
 
 <body>
 
-<div class="globos">
-    <div class="globo" style="left:10%; background:#ff4f9a; animation-delay:0s;"></div>
-    <div class="globo" style="left:25%; background:#ff85b3; animation-delay:2s;"></div>
-    <div class="globo" style="left:45%; background:#ffd166; animation-delay:4s;"></div>
-    <div class="globo" style="left:65%; background:#7bdff2; animation-delay:1s;"></div>
-    <div class="globo" style="left:85%; background:#b2f7ef; animation-delay:3s;"></div>
+<!-- ESTRELLAS -->
+
+<div class="estrellas">
+
+<div class="estrella" style="top:10%; left:15%;"></div>
+<div class="estrella" style="top:20%; left:80%;"></div>
+<div class="estrella" style="top:70%; left:40%;"></div>
+<div class="estrella" style="top:50%; left:10%;"></div>
+<div class="estrella" style="top:85%; left:75%;"></div>
+
+<!-- GLOBOS -->
+
+<div class="globo" style="left:10%; background:#ff4f9a;"></div>
+<div class="globo" style="left:30%; background:#ffd166; animation-delay:2s;"></div>
+<div class="globo" style="left:55%; background:#7bdff2; animation-delay:4s;"></div>
+<div class="globo" style="left:80%; background:#b2f7ef; animation-delay:1s;"></div>
+
 </div>
 
 <div class="container">
 
-    <h1>🎉 Feliz Cumpleaños Hermana 🎉</h1>
+<h1>🎉 Feliz Cumpleaños Hermana 🎉</h1>
 
-    <button onclick="mostrarSorpresa()">
-        Presiona para ver tu sorpresa 🎂
-    </button>
+<button onclick="mostrarSorpresa()">
+    Presiona para tu sorpresa 🎂
+</button>
 
-    <div class="pastel" id="pastel">
+<!-- AUDIO -->
+<audio id="musica">
+    <source src="https://files.catbox.moe/yr430f.m4a" type="audio/mp4">
+</audio>
 
-        <div class="vela">
-            <div class="flama"></div>
-        </div>
+<!-- PASTEL -->
 
-        <div class="capa3"></div>
-        <div class="capa2"></div>
-        <div class="base"></div>
+<div class="pastel" id="pastel">
 
+    <div class="vela">
+        <div class="flama"></div>
     </div>
 
-    <div class="mensaje" id="mensaje">
-        Gracias por ser una hermana increíble 💖<br><br>
+    <div class="capa3"></div>
+    <div class="capa2"></div>
+    <div class="base"></div>
 
-        Hoy quiero recordarte lo especial que eres para mí.
-        Gracias por tus consejos, tus risas y todos los
-        momentos bonitos que compartimos ✨<br><br>
+</div>
 
-        Espero que este cumpleaños esté lleno de felicidad,
-        regalos, abrazos y muchísima alegría 🎈🎂<br><br>
+<!-- MENSAJE -->
 
-        Nunca olvides lo importante que eres para mí,
-        porque siempre tendrás un lugar enorme en mi corazón 💕<br><br>
+<div class="mensaje" id="mensaje">
 
-        ¡Te quiero muchísimo hermana! 🎉
-    </div>
+    Gracias por ser una hermana increíble 💖<br><br>
+
+    Hoy quiero recordarte lo especial que eres para mí,
+    gracias por cada risa, cada consejo y cada momento bonito
+    que hemos compartido juntos ✨<br><br>
+
+    Espero que este cumpleaños esté lleno de felicidad,
+    abrazos, regalos y muchísima alegría 🎈🎂<br><br>
+
+    Mereces todo lo bonito de este mundo porque tienes
+    un corazón enorme y siempre iluminas la vida
+    de las personas que te rodean 🌸<br><br>
+
+    Nunca olvides lo importante que eres para mí,
+    porque siempre tendrás un lugar gigante en mi corazón 💕<br><br>
+
+    Gracias por existir hermana,
+    y espero que todos tus sueños se hagan realidad ✨🎉
+
+</div>
 
 </div>
 
 <script>
 
-let audio;
-
 function mostrarSorpresa(){
 
-    document.getElementById("pastel").style.display="block";
+    // MOSTRAR PASTEL
+    document.getElementById("pastel").style.display = "block";
 
+    // MOSTRAR TEXTO
     document.getElementById("mensaje")
     .classList.add("mostrar");
 
-    if(!audio){
+    // REPRODUCIR MUSICA
+    const musica = document.getElementById("musica");
 
-        audio = new Audio(
-        "https://files.catbox.moe/yr430f.m4a"
-        );
+    musica.volume = 1;
 
-        audio.volume = 1;
+    musica.play();
 
-        audio.play().catch(() => {
-            alert("Toca otra vez el botón para reproducir la música 🎵");
-        });
-    }
 }
 
 </script>
