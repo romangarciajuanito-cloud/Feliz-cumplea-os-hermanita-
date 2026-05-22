@@ -21,20 +21,24 @@ html{
 
 body{
     min-height:100vh;
+    overflow-x:hidden;
     overflow-y:auto;
     background:linear-gradient(135deg,#ff9ecf,#ffd6ec,#fff0f6);
     font-family:'Poppins',sans-serif;
     position:relative;
 }
 
-/* FONDO */
+/* ESTRELLAS */
 
 .estrellas{
     position:fixed;
     width:100%;
     height:100%;
+    top:0;
+    left:0;
     overflow:hidden;
     z-index:0;
+    pointer-events:none;
 }
 
 .estrella{
@@ -57,18 +61,45 @@ body{
     }
 }
 
+/* GLOBOS */
+
+.globo{
+    position:absolute;
+    bottom:-150px;
+    width:70px;
+    height:90px;
+    border-radius:50%;
+    opacity:0.7;
+    animation:subir 12s linear infinite;
+}
+
+.globo::after{
+    content:'';
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:white;
+    left:50%;
+    top:90px;
+}
+
+@keyframes subir{
+    0%{
+        transform:translateY(0);
+    }
+    100%{
+        transform:translateY(-140vh);
+    }
+}
+
 /* CONTENIDO */
 
 .container{
     position:relative;
     z-index:2;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    width:100%;
     text-align:center;
-    padding:40px 20px 80px;
+    padding:60px 20px 200px;
 }
 
 /* TITULO */
@@ -113,7 +144,7 @@ button:hover{
 /* PASTEL */
 
 .pastel{
-    margin-top:50px;
+    margin:50px auto 30px;
     width:250px;
     height:250px;
     position:relative;
@@ -196,8 +227,9 @@ button:hover{
 /* MENSAJE */
 
 .mensaje{
-    margin-top:40px;
+    margin:40px auto 0;
     max-width:850px;
+    width:100%;
     color:white;
     font-size:1.4rem;
     line-height:2;
@@ -205,8 +237,9 @@ button:hover{
     transform:translateY(30px);
     transition:1.5s;
     text-shadow:0 0 12px rgba(0,0,0,0.15);
-    padding-bottom:80px;
+    padding:0 10px 150px;
     font-weight:600;
+    word-wrap:break-word;
 }
 
 .mostrar{
@@ -214,48 +247,17 @@ button:hover{
     transform:translateY(0);
 }
 
-/* GLOBOS */
-
-.globo{
-    position:absolute;
-    bottom:-150px;
-    width:70px;
-    height:90px;
-    border-radius:50%;
-    opacity:0.7;
-    animation:subir 12s linear infinite;
-}
-
-.globo::after{
-    content:'';
-    position:absolute;
-    width:2px;
-    height:80px;
-    background:white;
-    left:50%;
-    top:90px;
-}
-
-@keyframes subir{
-    0%{
-        transform:translateY(0);
-    }
-    100%{
-        transform:translateY(-140vh);
-    }
-}
-
 /* CELULAR */
 
 @media(max-width:700px){
 
     h1{
-        font-size:2.4rem;
+        font-size:2.3rem;
     }
 
     .mensaje{
-        font-size:1.2rem;
-        line-height:1.8;
+        font-size:1.15rem;
+        line-height:1.9;
     }
 
     button{
@@ -274,7 +276,7 @@ button:hover{
 
 <body>
 
-<!-- ESTRELLAS -->
+<!-- FONDO -->
 
 <div class="estrellas">
 
@@ -284,14 +286,14 @@ button:hover{
 <div class="estrella" style="top:50%; left:10%;"></div>
 <div class="estrella" style="top:85%; left:75%;"></div>
 
-<!-- GLOBOS -->
-
 <div class="globo" style="left:10%; background:#ff4f9a;"></div>
 <div class="globo" style="left:30%; background:#ffd166; animation-delay:2s;"></div>
 <div class="globo" style="left:55%; background:#7bdff2; animation-delay:4s;"></div>
 <div class="globo" style="left:80%; background:#b2f7ef; animation-delay:1s;"></div>
 
 </div>
+
+<!-- CONTENIDO -->
 
 <div class="container">
 
@@ -302,6 +304,7 @@ button:hover{
 </button>
 
 <!-- AUDIO -->
+
 <audio id="musica">
     <source src="https://files.catbox.moe/yr430f.m4a" type="audio/mp4">
 </audio>
@@ -341,7 +344,15 @@ button:hover{
     porque siempre tendrás un lugar gigante en mi corazón 💕<br><br>
 
     Gracias por existir hermana,
-    y espero que todos tus sueños se hagan realidad ✨🎉
+    y espero que todos tus sueños se hagan realidad ✨🎉<br><br>
+
+    Hoy celebramos a una persona maravillosa,
+    divertida, fuerte y única 💫<br><br>
+
+    Nunca cambies esa forma tan bonita de ser,
+    porque haces más felices a todos los que te quieren 💗<br><br>
+
+    ¡Feliz cumpleaños hermana! 🎂🎉💖
 
 </div>
 
@@ -354,7 +365,7 @@ function mostrarSorpresa(){
     // MOSTRAR PASTEL
     document.getElementById("pastel").style.display = "block";
 
-    // MOSTRAR TEXTO
+    // MOSTRAR MENSAJE
     document.getElementById("mensaje")
     .classList.add("mostrar");
 
