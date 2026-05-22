@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feliz Cumpleaños Hermana 🎂</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins',sans-serif;
+    }
+
+    body{
+        height:100vh;
+        overflow:hidden;
+        background:linear-gradient(135deg,#ffb6d9,#ffd6ec,#fff0f6);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        position:relative;
+    }
+
+    .container{
+        text-align:center;
+        z-index:2;
+        padding:20px;
+    }
+
+    h1{
+        color:white;
+        font-size:3rem;
+        text-shadow:0 0 15px rgba(255,255,255,0.8);
+        animation:flotar 2s ease-in-out infinite;
+    }
+
+    .mensaje{
+        margin-top:20px;
+        font-size:1.3rem;
+        color:white;
+        max-width:700px;
+        opacity:0;
+        transform:translateY(20px);
+        transition:1s;
+    }
+
+    .mostrar{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+    button{
+        margin-top:30px;
+        padding:15px 30px;
+        border:none;
+        border-radius:40px;
+        background:white;
+        color:#ff4f9a;
+        font-size:1.1rem;
+        cursor:pointer;
+        transition:0.3s;
+        box-shadow:0 0 15px rgba(255,255,255,0.6);
+    }
+
+    button:hover{
+        transform:scale(1.08);
+    }
+
+    .pastel{
+        margin:40px auto 0;
+        width:220px;
+        height:220px;
+        position:relative;
+        display:none;
+        animation:aparecer 1.5s ease;
+    }
+
+    .base{
+        width:220px;
+        height:90px;
+        background:#ff85b3;
+        border-radius:20px;
+        position:absolute;
+        bottom:0;
+        box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .capa2{
+        width:180px;
+        height:70px;
+        background:#ff5fa2;
+        border-radius:20px;
+        position:absolute;
+        bottom:70px;
+        left:20px;
+    }
+
+    .capa3{
+        width:140px;
+        height:55px;
+        background:#ff3d8d;
+        border-radius:20px;
+        position:absolute;
+        bottom:125px;
+        left:40px;
+    }
+
+    .vela{
+        width:12px;
+        height:45px;
+        background:white;
+        position:absolute;
+        top:10px;
+        left:104px;
+        border-radius:10px;
+    }
+
+    .flama{
+        width:20px;
+        height:20px;
+        background:gold;
+        position:absolute;
+        top:-15px;
+        left:-4px;
+        border-radius:50%;
+        box-shadow:0 0 20px gold;
+        animation:fuego .6s infinite alternate;
+    }
+
+    .globos{
+        position:absolute;
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        z-index:1;
+    }
+
+    .globo{
+        position:absolute;
+        bottom:-150px;
+        width:60px;
+        height:80px;
+        border-radius:50%;
+        animation:subir 10s linear infinite;
+        opacity:0.8;
+    }
+
+    .globo::after{
+        content:'';
+        position:absolute;
+        width:2px;
+        height:70px;
+        background:white;
+        left:50%;
+        top:80px;
+    }
+
+    @keyframes subir{
+        0%{
+            transform:translateY(0);
+        }
+        100%{
+            transform:translateY(-120vh);
+        }
+    }
+
+    @keyframes fuego{
+        from{
+            transform:scale(1);
+        }
+        to{
+            transform:scale(1.2);
+        }
+    }
+
+    @keyframes aparecer{
+        from{
+            opacity:0;
+            transform:scale(0.5);
+        }
+        to{
+            opacity:1;
+            transform:scale(1);
+        }
+    }
+
+    @keyframes flotar{
+        0%,100%{
+            transform:translateY(0);
+        }
+        50%{
+            transform:translateY(-10px);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="globos">
+    <div class="globo" style="left:10%; background:#ff4f9a; animation-delay:0s;"></div>
+    <div class="globo" style="left:25%; background:#ff85b3; animation-delay:2s;"></div>
+    <div class="globo" style="left:45%; background:#ffd166; animation-delay:4s;"></div>
+    <div class="globo" style="left:65%; background:#7bdff2; animation-delay:1s;"></div>
+    <div class="globo" style="left:85%; background:#b2f7ef; animation-delay:3s;"></div>
+</div>
+
+<div class="container">
+
+    <h1>🎉 Feliz Cumpleaños Hermana 🎉</h1>
+
+    <button onclick="mostrarSorpresa()">
+        Presiona para ver tu sorpresa 🎂
+    </button>
+
+    <div class="pastel" id="pastel">
+        <div class="vela">
+            <div class="flama"></div>
+        </div>
+
+        <div class="capa3"></div>
+        <div class="capa2"></div>
+        <div class="base"></div>
+    </div>
+
+    <div class="mensaje" id="mensaje">
+        Gracias por estar siempre conmigo, por tus risas,
+        tus consejos y todos los momentos increíbles.
+        Hoy es tu día y mereces toda la felicidad del mundo.
+        💖✨<br><br>
+
+        Que todos tus sueños se hagan realidad y nunca te
+        falten motivos para sonreír. 🎂🎈
+    </div>
+
+</div>
+
+<script>
+function mostrarSorpresa(){
+    document.getElementById("pastel").style.display="block";
+    document.getElementById("mensaje").classList.add("mostrar");
+
+    const audio = new Audio(
+    "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    );
+
+    audio.volume = 0.2;
+    audio.play();
+}
+</script>
+
+</body>
+</html>
