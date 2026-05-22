@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz Cumpleaños Hermana 🎂</title>
 
-<!-- FUENTES BONITAS -->
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -17,23 +16,27 @@
 }
 
 body{
-    height:100vh;
-    overflow:hidden;
+    min-height:100vh;
+    overflow-y:auto;
     background:linear-gradient(135deg,#ffb6d9,#ffd6ec,#fff0f6);
     display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
+    padding:40px 15px;
 }
 
 /* GLOBOS */
 
 .globos{
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
     overflow:hidden;
     z-index:1;
+    top:0;
+    left:0;
+    pointer-events:none;
 }
 
 .globo{
@@ -43,7 +46,7 @@ body{
     height:80px;
     border-radius:50%;
     animation:subir 10s linear infinite;
-    opacity:0.8;
+    opacity:0.7;
 }
 
 .globo::after{
@@ -65,19 +68,23 @@ body{
     }
 }
 
-/* CONTENIDO */
+/* CONTENEDOR */
 
 .container{
     text-align:center;
     z-index:2;
-    padding:20px;
+    width:100%;
+    max-width:700px;
 }
+
+/* TITULO */
 
 h1{
     font-family:'Pacifico', cursive;
     color:white;
-    font-size:3.3rem;
+    font-size:2.8rem;
     text-shadow:0 0 15px rgba(255,255,255,0.8);
+    margin-bottom:20px;
     animation:flotar 2s ease-in-out infinite;
 }
 
@@ -90,29 +97,31 @@ h1{
     }
 }
 
+/* BOTON */
+
 button{
-    margin-top:30px;
-    padding:15px 30px;
+    padding:18px 30px;
     border:none;
     border-radius:40px;
     background:white;
     color:#ff4f9a;
-    font-size:1.1rem;
+    font-size:1.2rem;
     font-family:'Poppins', sans-serif;
     font-weight:600;
     cursor:pointer;
     transition:0.3s;
-    box-shadow:0 0 15px rgba(255,255,255,0.6);
+    box-shadow:0 0 20px rgba(255,255,255,0.7);
+    margin-bottom:35px;
 }
 
 button:hover{
-    transform:scale(1.08);
+    transform:scale(1.05);
 }
 
 /* PASTEL */
 
 .pastel{
-    margin:40px auto 0;
+    margin:0 auto 30px;
     width:220px;
     height:220px;
     position:relative;
@@ -195,21 +204,42 @@ button:hover{
 /* MENSAJE */
 
 .mensaje{
-    margin-top:20px;
-    font-size:1.3rem;
+    font-size:1.4rem;
     font-family:'Poppins', sans-serif;
     color:white;
-    max-width:700px;
+    width:100%;
     opacity:0;
     transform:translateY(20px);
     transition:1s;
-    line-height:1.8;
-    text-shadow:0 0 10px rgba(255,255,255,0.5);
+    line-height:2;
+    text-shadow:0 0 10px rgba(0,0,0,0.15);
+    padding-bottom:50px;
+    font-weight:600;
 }
 
 .mostrar{
     opacity:1;
     transform:translateY(0);
+}
+
+/* CELULAR */
+
+@media(max-width:600px){
+
+    h1{
+        font-size:2.2rem;
+    }
+
+    .mensaje{
+        font-size:1.2rem;
+        padding:0 10px 50px;
+    }
+
+    button{
+        width:90%;
+        font-size:1.1rem;
+    }
+
 }
 
 </style>
@@ -255,12 +285,17 @@ button:hover{
         Espero que este cumpleaños esté lleno de felicidad,
         regalos, abrazos y muchísima alegría 🎈🎂<br><br>
 
-        ¡Te quiero mucho hermana!
+        Nunca olvides lo importante que eres para mí,
+        porque siempre tendrás un lugar enorme en mi corazón 💕<br><br>
+
+        ¡Te quiero muchísimo hermana! 🎉
     </div>
 
 </div>
 
 <script>
+
+let audio;
 
 function mostrarSorpresa(){
 
@@ -269,12 +304,18 @@ function mostrarSorpresa(){
     document.getElementById("mensaje")
     .classList.add("mostrar");
 
-    const audio = new Audio(
-    "https://files.catbox.moe/yr430f.m4a"
-    );
+    if(!audio){
 
-    audio.volume = 0.5;
-    audio.play();
+        audio = new Audio(
+        "https://files.catbox.moe/yr430f.m4a"
+        );
+
+        audio.volume = 1;
+
+        audio.play().catch(() => {
+            alert("Toca otra vez el botón para reproducir la música 🎵");
+        });
+    }
 }
 
 </script>
